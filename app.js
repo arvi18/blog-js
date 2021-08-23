@@ -15,8 +15,10 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
+let publishedContent=""
+
 app.get("/", (req, res)=>{
-  res.render("home", {homeContent:homeStartingContent});
+  res.render("home", {homeContent:homeStartingContent, publishedContent:publishedContent});
 });
 
 app.get("/about", (req, res)=>{
@@ -27,6 +29,14 @@ app.get("/contact", (req, res)=>{
   res.render("contact", {contactContent:contactContent});
 });
 
+app.get("/compose", (req, res)=>{
+  res.render("compose");
+});
+app.post("/compose", (req, res)=>{
+  publishedContent=req.body.composeText
+  console.log('publishedContent:', publishedContent)
+  res.redirect("/")
+});
 
 app.listen(8000, function() {
   console.log("Server started on port 8000");
