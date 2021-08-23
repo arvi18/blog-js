@@ -19,6 +19,14 @@ app.get("/", (req, res)=>{
   res.render("home", {homeContent:homeStartingContent});
 });
 
+app.get("/about", (req, res)=>{
+  res.render("about", {aboutContent:aboutContent});
+});
+
+app.get("/contact", (req, res)=>{
+  res.render("contact", {contactContent:contactContent});
+});
+
 
 app.listen(8000, function() {
   console.log("Server started on port 8000");
