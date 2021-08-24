@@ -44,14 +44,16 @@ app.post("/compose", (req, res)=>{
 });
 
 app.get("/posts/:post", (req, res)=>{
-  let reqTitle=(req.params.post).toLowerCase()
+  let reqTitle=(req.params.post)
   console.log('reqTitle:', reqTitle)
 posts.forEach(()=>{
-  let title=(post.title).toLowerCase()
-  if(reqTitle===title){
-    res.send("lkajglkaogjaogajjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj39t3w9tw9twt9w3twt")
+  let title=(post.title)
+  if(reqTitle.toLowerCase()===title.toLowerCase()){
+    res.render("post", {
+      title:post.title,
+      content:post.content})
   }else{
-    res.send("not found")   
+    res.send("not found")
   }
 })
 
